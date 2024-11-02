@@ -456,7 +456,8 @@ header.vs-row {
 	aspect-ratio: 1;
 }
 .socials a{
-	place-items: center;
+	display: flex;
+	place-content: center;
 	background:var(--color2);
 	border-radius:50%;
 }
