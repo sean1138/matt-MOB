@@ -1,14 +1,16 @@
 /* START unset/reset/normalize v.sean2024.10.30 */
- ::-moz-selection {
-	background:var(--color-black);
+::-moz-selection {
+	background: var(--color-black);
 	color: var(--color2);
-	text-shadow:.033em .033em 1px var(--color3);
+	text-shadow: .033em .033em 1px var(--color3);
 }
+
 ::selection {
-	background:var(--color-black);
+	background: var(--color-black);
 	color: var(--color2);
-	text-shadow:.033em .033em 1px var(--color3);
+	text-shadow: .033em .033em 1px var(--color3);
 }
+
 html,
 body {
 	margin: 0;
@@ -302,11 +304,11 @@ a:active {
 
 /* typography */
 p {
-	margin: 1em 0;
-	max-width: 80ch;
 	margin: 0 auto;
 	margin-bottom: 1em;
 	margin-top: 1em;
+	width: 80ch;
+	max-width: calc(100% - (var(--p-unit-lr) * 2));
 }
 
 :is(h1, h2, h3, h4, h5, h6) {
@@ -455,11 +457,12 @@ header.vs-row {
 	height: 48px;
 	aspect-ratio: 1;
 }
-.socials a{
+
+.socials a {
 	display: flex;
 	place-content: center;
-	background:var(--color2);
-	border-radius:50%;
+	background: var(--color2);
+	border-radius: 50%;
 }
 
 /* START fade in effect */
@@ -908,32 +911,57 @@ main>section:nth-child(even) {
 }
 
 .modal-content {
-	position:relative;
+	position: relative;
 	background: var(--color-black);
 	padding: var(--p-unit-lr);
-	max-width: 90vw;
-	width: 100%;
-	height: 90vh;
+	width: 90vw;
+	height: 80vh;
 	border: 1px solid var(--color2);
 }
 
-.modal-content > p{
-	margin:0;
-	line-height:1;
-	max-width:unset;
-	text-align:right;
+.modal-content>p {
+	position: relative;
+	margin: 0;
+	line-height: 32px;
+	max-width: unset;
+	text-align: right;
+	width: auto;
+	z-index: 1;
 }
 
 a.close-btn {
-/*	position:absolute;
-	right:32px;*/
+	position: absolute;
+	right: 16px;
+	top: 16px;
+	display: inline-flex;
+	justify-content: center;
+	place-items: center;
+	width: 64px;
+	height: 64px;
 	font-size: 64px;
 	color: var(--color-link);
-	text-decoration:none;
+	text-decoration: none;
+	background: var(--color-black);
+	border-radius: 50%;
+	z-index: 1;
 }
 
 a.open-modal * {
 	color: var(--color-link);
+}
+
+.modal-content-slurp {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: var(--p-unit-lr);
+	width: 100%;
+	height: calc(100% - (var(--p-unit-lr) * 2));
+	overflow: auto;
+}
+
+.modal-content-slurp p {
+	margin-left: 0;
 }
 
 body.modal-active {
