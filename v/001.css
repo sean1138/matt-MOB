@@ -1,4 +1,14 @@
 /* START unset/reset/normalize v.sean2024.10.30 */
+ ::-moz-selection {
+	background:var(--color-black);
+	color: var(--color2);
+	text-shadow:.033em .033em 1px var(--color1);
+}
+::selection {
+	background:var(--color-black);
+	color: var(--color2);
+	text-shadow:.033em .033em 1px var(--color1);
+}
 html,
 body {
 	margin: 0;
