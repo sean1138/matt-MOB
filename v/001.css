@@ -1,0 +1,923 @@
+/* START unset/reset/normalize v.sean2024.10.30 */
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+/* set rem base font-size on html element */
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 160px;
+	font-size: min(4vmin, calc(100% + .125vmax));
+	/*	font-size: 6vmin;*/
+	/* the base padding size var(--p-unit) is for top/bottom on sections at desktop res, use half of that for left/right, lower than desktop res not accounted for in this file */
+	--p-unit: 3rem;
+	--p-unit-tb: var(--p-unit);
+	--p-unit-lr: min(calc(var(--p-unit) / 2), 1rem);
+	/* see type-scale.com */
+	--type-scale: 1.200;
+	/* do some letter-spacing scaling similar to your type scale value */
+	--ls-scale: .0120em;
+	/* 	--ls-scale: .0133em; */
+	--vs-lh: 1.5;
+	/* clamps vars for font-size calcs on h1 & h2 */
+	--clamp-min: 2rem;
+	/* magic number based on longest word problems */
+	--clamp-pref: 7cqi;
+	--vs-gap: calc(var(--p-unit) / 2);
+	/* dark grey */
+	--color1: hsla(220, 6%, 11%, 1);
+	--color1-5: hsla(220, 6%, 11%, .5);
+	--color1-0: hsla(220, 6%, 11%, 0);
+	/* orange */
+	--color2: hsla(17, 91%, 54%, 1);
+
+	.color2 {
+		color: var(--color2);
+	}
+
+	--color2-5: hsla(17, 91%, 54%, .5);
+	/* med grey */
+	--color3: hsl(235, 7%, 65%, 1);
+	/* med grey */
+	--color-txt: hsla(235, 7%, 65%, 1);
+	/* another grey for striped sections */
+	--color4: hsla(220, 6%, 12%, 1);
+	--color-white: hsla(0, 0%, 100%, 1);
+	--color-black: hsla(0, 0%, 0%, 1);
+	--color-black-8: hsla(0, 0%, 0%, 0.8);
+	--color-link: hsla(197, 91%, 46%, 1);
+	/* animation speeds */
+	--a-spd-1:all ease-in-out 125ms;
+	--a-spd-2:all ease-in-out 250ms;
+	/* text shadow */
+	--t-shadow-1:0 0 8px rgba(0, 0, 0, 0.8);
+}
+
+body {
+	font-family: "Lato", sans-serif;
+	line-height: var(--vs-lh);
+	font-weight: 400;
+	/* remove empty space below footer on short content pages */
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	color: var(--color-txt);
+	background-color: var(--color1);
+}
+
+footer {
+	margin-top: auto;
+}
+
+footer h2 {
+	text-transform: uppercase;
+	text-shadow: none;
+}
+
+/* ideally we want to write rules with weak selectors like this */
+address {
+	font-style: unset;
+}
+
+/* give lists consistent style across all browsers */
+OL,
+UL {
+	margin: 0;
+	padding: 0;
+	line-height: calc(var(--vs-lh) * .85);
+}
+
+OL {
+	list-style: decimal;
+}
+
+OL OL {
+	list-style: lower-alpha;
+}
+
+OL OL OL {
+	list-style: upper-roman;
+}
+
+UL {
+	list-style: disc;
+}
+
+UL UL {
+	list-style: circle;
+}
+
+UL UL UL {
+	list-style: square;
+}
+
+UL UL UL UL {
+	list-style: disc;
+}
+
+DL,
+OL,
+UL {
+	margin: 1em 1em 1em 3em;
+	list-style-position: outside;
+}
+
+/* nested lists get reduced margins */
+UL UL,
+OL OL,
+OL UL,
+UL OL {
+	margin-left: 1em;
+	margin-bottom: 0;
+}
+
+OL OL UL,
+UL OL UL,
+OL OL OL {}
+
+LI {
+	margin-left: 0em;
+	margin-right: 1em;
+	text-indent: 0em;
+	margin-bottom: .25em;
+	/*border:1px blue solid;*/
+}
+
+DT {
+	float: left;
+	clear: left;
+	font-weight: bold;
+	margin-right: .5em;
+}
+
+DT:after {
+	content: ":";
+	font-weight: bold;
+}
+
+DD {
+	margin-left: 0;
+	padding-left: 0;
+	-webkit-margin-start: 0px;
+	font-weight: normal;
+	margin-bottom: .5em;
+}
+
+LI>UL,
+LI>OL {
+	margin-top: .25em;
+	margin-bottom: .25em;
+}
+
+UL.none {
+	list-style-type: none;
+}
+
+UL.none0 {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+OL.inline>LI,
+UL.inline>LI {
+	display: inline-block;
+}
+
+/* sup/sub fix to maintain line-height */
+SUP,
+SUB {
+	height: 0;
+	line-height: 1;
+	vertical-align: baseline;
+	_vertical-align: bottom;
+	position: relative;
+}
+
+SUP {
+	bottom: 1ex;
+}
+
+SUB {
+	top: .5ex;
+}
+
+/*** start links ***/
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* who thought blue linked image borders were a good idea? */
+a img,
+:link img,
+:visited img,
+a object,
+:link object,
+:visited object {
+	border: 0;
+}
+
+/*some long-arse links refused to break nicely, this fixes*/
+A {
+	word-wrap: break-word;
+}
+
+/* to prevent a gap from showing below images in some browsers */
+img {
+	vertical-align: bottom;
+}
+
+/* styling for links and visited links as well as for links in a hovered, focus and active state
+ * make sure to keep these rules in that order, with :active being last
+ * text-decoration: none is to make the links more legible while they are in a hovered, focus or active state
+ * link underlines tend to make hypertext less readable, because underlines obscure the shapes of the lower halves of words
+ * a:focus and :focus are used to help keyboard users, you may change their styling, but make sure to give users a visual clue of the element's state.
+ * outline:none used with the pseudo-class :hover is to avoid outline when a user clicks on links
+ * note that these last rules do not do anything in IE as this browser does not support "outline"
+ */
+a:link,
+a:link :is(h1, h2, h3, h4, h5, h6) {
+	color: var(--color-link);
+	text-decoration: none;
+}
+
+a:visited {
+	color: #800080;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus {
+	text-decoration: none;
+}
+
+a:focus
+
+/*,:focus*/
+	{
+	outline: 1px dotted var(--color-link);
+}
+
+a:hover,
+a:active {
+	outline: none;
+}
+
+a:active {
+	color: #FF0000;
+}
+
+.skip-to-content-link {
+	background: var(--color-white);
+	height: 30px;
+	left: var(--p-unit-lr);
+	padding: 8px;
+	position: absolute;
+	transform: translateY(-150%);
+	transition: transform 0.3s;
+	z-index: 9;
+}
+
+.skip-to-content-link:focus {
+	transform: translateY(0%);
+}
+
+/*** end links ***/
+
+/* typography */
+p {
+	margin: 1em 0;
+	max-width: 80ch;
+	margin: 0 auto;
+	margin-bottom: 1em;
+	margin-top: 1em;
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+	overflow-wrap: break-word;
+	hyphens: auto;
+	max-width: 80ch;
+	text-transform: capitalize;
+	letter-spacing: var(--ls-scale);
+	color: var(--color-white);
+	font-weight: 600;
+	text-shadow: var(--t-shadow-1);
+}
+
+h2+h3 {
+	margin-top: 0;
+}
+
+small {
+	font-size: calc(1em / var(--type-scale));
+}
+
+big {
+	font-size: calc(var(--type-scale) *1.6em);
+}
+
+.p {
+	font-size: 1rem;
+}
+
+h6,
+.h6 {
+	font-size: calc(1rem * pow(var(--type-scale), var(--type-scale)));
+}
+
+h5,
+.h5 {
+	font-size: calc(1rem * pow(var(--type-scale), 2));
+}
+
+h4,
+.h4 {
+	font-size: calc(1rem * pow(var(--type-scale), 3));
+}
+
+h3,
+.h3 {
+	font-size: calc(1rem * pow(var(--type-scale), 4));
+	color: var(--color3);
+}
+
+section>h3 {
+	margin: 0;
+}
+
+h2,
+.h2 {
+	font-size: calc(1rem * pow(var(--type-scale), 5));
+}
+
+h1,
+.h1 {
+	font-size: calc(1rem * pow(var(--type-scale), 6));
+	text-transform: uppercase;
+	font-weight: 900;
+	text-align: center;
+}
+
+/* END unset/reset/normalize*/
+/*** START Ridiculously easy row and column layouts with Flexbox  ***/
+.vs-row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: calc(100% - (var(--p-unit-lr) *2));
+	gap: var(--vs-gap);
+}
+
+.vs-col {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+	gap: calc(var(--vs-gap) / 2);
+}
+
+.vs-col-span-2 {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+}
+
+.vs-center-all {
+	justify-content: center;
+	place-items: center;
+	align-self: center;
+}
+
+.vs-center-xy {
+	justify-content: center;
+	place-items: center;
+}
+
+@media screen and (min-width: 720px) {
+	.vs-col {
+		flex: 1
+	}
+
+	.vs-col-span-2 {
+		flex: 2
+	}
+}
+
+/*** END Ridiculously easy row and column layouts with Flexbox  ***/
+
+header,
+main,
+footer {
+	display: flex;
+	flex-direction: column;
+	padding: var(--p-unit-tb) var(--p-unit-lr);
+}
+
+main {
+	padding: 0;
+}
+
+header {
+	position: sticky;
+	top: 0;
+}
+
+footer {
+	background: var(--color2);
+	color: var(--color-white);
+}
+
+header.vs-row {
+	flex-wrap: nowrap;
+	width: auto;
+	background-color: var(--color1-5);
+	background: linear-gradient(var(--color1) 25%, var(--color1-0));
+	z-index: 1;
+}
+
+.socials :where(a, img) {
+	display: block;
+	height: 48px;
+	aspect-ratio: 1;
+}
+.socials a{
+	place-items: center;
+	background:var(--color2);
+	border-radius:50%;
+}
+
+/* START fade in effect */
+H1 {
+	-webkit-animation: fadein-txt 2s;
+	/* Safari, Chrome and Opera > 12.1 */
+	-moz-animation: fadein-txt 2s;
+	/* Firefox < 16 */
+	-ms-animation: fadein-txt 2s;
+	/* Internet Explorer */
+	-o-animation: fadein-txt 2s;
+	/* Opera < 12.1 */
+	animation: fadein-txt 2s;
+}
+
+@keyframes fadein-txt {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+/* END fade in effect */
+/* START fade in + move down effect */
+h2.first {
+	text-align: center;
+	color: var(--color2);
+	-webkit-animation: slideY 2s cubic-bezier(0.17, 0.67, 0.14, 0.97) both;
+	animation: slideY 2s cubic-bezier(0.17, 0.67, 0.14, 0.97) both;
+	-webkit-animation-delay: 1s;
+	animation-delay: 1s;
+}
+
+@keyframes slideY {
+	from {
+		opacity: 0;
+		transform: translateY(-45px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* END fade in + move down effect */
+/* START more goofy animations */
+/* animation-timeline: view(); */
+@media screen and (prefers-reduced-motion: no-preference) {
+	.text-line {
+		animation: slideXY 2s;
+		animation-timeline: view();
+	}
+
+	.text-line:after {
+		animation: slideXY-after 2s;
+		animation-timeline: view();
+	}
+}
+
+
+@keyframes slideX {
+	from {
+		opacity: 0;
+		transform: translateX(-160px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideXY {
+	from {
+		opacity: 0;
+		transform: translateX(-160px) translateY(64px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0) translateY(0);
+	}
+}
+
+@keyframes slideXY-after {
+	from {
+		opacity: 0;
+		transform: translateX(-160px) translateY(160px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0) translateY(0);
+	}
+}
+
+.text-line:after {
+	display: block;
+	content: '';
+	width: 33.333vw;
+	height: 2px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background-color: var(--color2);
+	background: linear-gradient(-90deg, var(--color2) 0%, hsla(0, 0%, 0%, 0) 100%);
+}
+
+/* END more goofy animations */
+
+.atf {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	min-height: calc(100vh - var(--p-unit-tb) * 4 - var(--vs-gap));
+	place-items: center;
+	justify-content: end;
+	background-image: url("i/skullbg2c3840.jpg");
+	background-color: var(--color1);
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+.atf:before {
+	position: absolute;
+	top: 0;
+	display: block;
+	content: '';
+	background: linear-gradient(var(--color1), var(--color1-0));
+	height: 160px;
+	width: 100%;
+}
+
+.atf h1 {
+	flex-grow: 1;
+	align-content: center;
+	font-size: min(8vw, 80px);
+}
+
+.atf h2 {
+	font-size: min(8vw, 64px);
+}
+
+/* START hamburger menu */
+.menu {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	padding: 8px;
+	right: 0;
+	width: 48px;
+	height: 48px;
+	background-color: #F4591E;
+	border: solid 2px #F4591E;
+	border-radius: 50%;
+	cursor: pointer;
+	z-index: 3;
+}
+
+.menu .line {
+	position: absolute;
+	height: 1px;
+	transform-origin: left;
+	background-color: #1A1B1D;
+	width: 28px;
+	transition: var(--a-spd-2);
+}
+
+.menu .line1 {
+	top: 14px;
+	transform: scaleX(0.5);
+}
+
+.menu .line2 {
+	top: 22px;
+	transform: scaleX(1);
+}
+
+.menu .line3 {
+	top: 30px;
+	transform: scaleX(0.75);
+}
+
+.menu:hover :where(.line1, .line3) {
+	transform: scaleX(1);
+}
+
+.menu.active {
+	justify-content: center;
+}
+
+.menu.active div {
+	transform: scaleX(1);
+	transition: var(--a-spd-2);
+}
+
+.menu.active :where(.line1, .line3) {
+	top: 24px;
+	transition-delay: 0s;
+	transition-delay: 25ms;
+}
+
+.menu.active .line2 {
+	opacity: 0;
+}
+
+/* 48 x 368/384 box below*/
+
+.menu-contents {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	right: 0;
+	top: -40px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+	width: 48px;
+	transition: var(--a-spd-2);
+	/* relative height including empty space below */
+	--item-space: 96px;
+	/*	overflow: hidden;*/
+	opacity: 0;
+}
+
+.menu-contents li {
+	position: absolute;
+	top: 32px;
+	margin: 0;
+	padding: 0;
+	transition: var(--a-spd-1);
+	z-index: 1;
+}
+
+.menu-contents a {
+	display: flex;
+	padding: 18px;
+	background: var(--color1);
+	border: solid 2px var(--color2);
+	border-radius: 50%;
+	transition: var(--a-spd-1);
+}
+
+.menu-contents a:hover {
+	background: var(--color2);
+}
+
+.menu-contents a img {
+	transition: var(--a-spd-1);
+}
+
+.menu-contents a:hover img {
+	transform: scale(1.25);
+}
+
+.menu.active+.menu-contents {
+	top: 48px;
+	opacity: 1
+}
+
+.menu.active+.menu-contents :nth-child(2) {
+	top: 128px;
+}
+
+.menu.active+.menu-contents :nth-child(3) {
+	top: calc(128px + var(--item-space));
+}
+
+.menu.active+.menu-contents :nth-child(4) {
+	top: calc(128px + (var(--item-space) * 2));
+}
+
+.menu.active+.menu-contents :nth-child(5) {
+	top: calc(128px + (var(--item-space) * 3));
+}
+
+.menu.active+.menu-contents :nth-child(6) {
+	top: calc(128px + (var(--item-space) * 4));
+}
+
+/* END hamburger menu */
+
+main section {
+	display: flex;
+	gap: calc(var(--vs-gap) / 2);
+	gap: 0;
+	padding: var(--p-unit-tb) var(--p-unit-lr);
+}
+
+main section+section {
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	width: 80%;
+}
+
+/* striped sections */
+/*main>section:nth-child(odd):not(.atf) {
+	background: var(--color1);
+}
+
+main>section:nth-child(even) {
+	background: var(--color4);
+}
+*/
+/* the dates table */
+.date table {
+	margin: 70px 0;
+	width: 100%;
+	border-spacing: 0;
+}
+
+.date table td {
+	border-bottom: solid 1px #9fa0ac;
+	color: #9fa0ac;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.date table td a {
+	display: inline-block;
+	width: auto;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	/*	color: var(--color-white);*/
+	text-transform: uppercase;
+}
+
+.date table td a:hover {
+	transform: translateX(5px);
+	transition: all 250ms cubic-bezier(0, 0.69, 0.46, 0.95);
+}
+
+.date table td:first-of-type {
+	color: var(--color-white);
+}
+
+.date table td:nth-of-type(even) {
+	padding-left: 7px;
+}
+
+.date table span {
+	color: var(--color-white);
+	font-size: 16px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.images {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: calc(var(--vs-gap) * 1) calc(var(--vs-gap) * 2);
+}
+
+.images.beastpak {
+	padding-top: 0;
+}
+
+.images.beastpak :where(h3, h4, h5) {
+	/*	color: var(--color2);*/
+}
+
+.images figure {
+	margin: 0;
+	max-width: 256px;
+	place-items: center;
+}
+
+.images a {
+	position: relative;
+	display: block;
+	text-decoration: none;
+}
+
+.images a:hover:after {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	content: url('i/instagram-min-white.svg');
+	display: flex;
+	justify-content: center;
+	place-items: center;
+	background: var(--color2-5);
+	border-radius: 1rem;
+}
+
+.images :where(h4, h5) {
+	margin: 0;
+	text-align: center;
+	font-weight: normal;
+}
+
+.images h5 {
+	color: var(--color3);
+	opacity: 0.666;
+}
+
+/* back to top button */
+.btt {
+	position: fixed;
+	bottom: 25vh;
+	right: var(--p-unit-lr);
+	z-index: 10;
+	opacity: 0;
+	/* add a translate effect */
+	transform: translateY(-100px);
+	transition: all var(--a-spd-2) ease;
+}
+
+.btt svg {
+	filter: drop-shadow(var(--t-shadow-1));
+}
+
+.showBtn {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* the popups */
+.modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+	justify-content: center;
+	align-items: center;
+	z-index: 11;
+}
+
+.modal.active {
+	display: flex;
+	background: var(--color-black-8);
+}
+
+.modal-content {
+	position:relative;
+	background: var(--color-black);
+	padding: var(--p-unit-lr);
+	max-width: 90vw;
+	width: 100%;
+	height: 90vh;
+	border: 1px solid var(--color2);
+}
+
+a.close-btn {
+	position:absolute;
+	right:32px;
+	font-size: 64px;
+	color: var(--color-link);
+	text-decoration:none;
+}
+
+a.open-modal * {
+	color: var(--color-link);
+}
+
+body.modal-active {
+	overflow: hidden;
+}
