@@ -917,9 +917,16 @@ main>section:nth-child(even) {
 	border: 1px solid var(--color2);
 }
 
+.modal-content > p{
+	margin:0;
+	line-height:1;
+	max-width:unset;
+	text-align:right;
+}
+
 a.close-btn {
-	position:absolute;
-	right:32px;
+/*	position:absolute;
+	right:32px;*/
 	font-size: 64px;
 	color: var(--color-link);
 	text-decoration:none;
