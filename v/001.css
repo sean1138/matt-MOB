@@ -2,12 +2,12 @@
  ::-moz-selection {
 	background:var(--color-black);
 	color: var(--color2);
-	text-shadow:.033em .033em 1px var(--color1);
+	text-shadow:.033em .033em 1px var(--color3);
 }
 ::selection {
 	background:var(--color-black);
 	color: var(--color2);
-	text-shadow:.033em .033em 1px var(--color1);
+	text-shadow:.033em .033em 1px var(--color3);
 }
 html,
 body {
