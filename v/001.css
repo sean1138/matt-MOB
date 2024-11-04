@@ -243,8 +243,6 @@ A {
 /* to prevent a gap from showing below images in some browsers */
 img {
 	vertical-align: bottom;
-	width: fit-content;
-	max-width: 100%;
 }
 
 /* styling for links and visited links as well as for links in a hovered, focus and active state
@@ -829,6 +827,11 @@ main>section:nth-child(even) {
 	flex-wrap: wrap;
 	justify-content: center;
 	gap: calc(var(--vs-gap) * 1) calc(var(--vs-gap) * 2);
+}
+
+.images img{
+	width: fit-content;
+	max-width: 100%;
 }
 
 .images.beastpak {
