@@ -1005,6 +1005,7 @@ body.modal-active {
 .flip-card .front,
 .flip-card .back {
 	position: absolute;
+	width: 100%;
 	display: grid;
 	justify-content: center;
 	background: var(--color1);
