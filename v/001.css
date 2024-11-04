@@ -269,11 +269,11 @@ a:focus {
 	text-decoration: none;
 }
 
-a:focus
-
+a:focus,
+button:focus
 /*,:focus*/
 	{
-	outline: 1px dotted var(--color-link);
+	outline: 4px dotted var(--color-link);
 }
 
 a:hover,
@@ -961,7 +961,7 @@ a.open-modal * {
 }
 
 .modal-content-slurp p {
-/*	margin-left: 0;*/
+	/*	margin-left: 0;*/
 }
 
 body.modal-active {
