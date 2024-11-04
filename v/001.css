@@ -271,6 +271,7 @@ a:focus {
 
 a:focus,
 button:focus
+
 /*,:focus*/
 	{
 	outline: 4px dotted var(--color-link);
@@ -758,7 +759,7 @@ main section {
 	padding: var(--p-unit-tb) var(--p-unit-lr);
 }
 
-main section+section {
+main>section+section {
 	display: flex;
 	flex-direction: column;
 	align-self: center;
@@ -839,7 +840,8 @@ main>section:nth-child(even) {
 	place-items: center;
 }
 
-.images a {
+.images a,
+.images button {
 	position: relative;
 	display: block;
 	text-decoration: none;
@@ -966,4 +968,47 @@ a.open-modal * {
 
 body.modal-active {
 	overflow: hidden;
+}
+
+/* flip cards */
+.images.cards {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0 calc(var(--vs-gap) * 2);
+}
+.images.cards .flip-card {
+	--fc-w: 256px;
+	--fc-h: 352px;
+	position: relative;
+	width: var(--fc-w);
+	height: var(--fc-h);
+	place-items: unset;
+}
+
+.flip-card .contents {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
+	transition: transform 1s;
+	transform-style: preserve-3d;
+}
+
+.flip-card:hover .contents {
+	transform: rotateY(180deg);
+	transition: transform 0.5s;
+}
+
+.flip-card .front, .flip-card .back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background:var(--color1);
+	backface-visibility: hidden;
+}
+
+.flip-card .back{
+	transform: rotateY(180deg);
 }
