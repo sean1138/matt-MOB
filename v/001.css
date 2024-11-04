@@ -243,6 +243,8 @@ A {
 /* to prevent a gap from showing below images in some browsers */
 img {
 	vertical-align: bottom;
+	width: fit-content;
+	max-width: 100%;
 }
 
 /* styling for links and visited links as well as for links in a hovered, focus and active state
@@ -1025,9 +1027,5 @@ body.modal-active {
 
 .flip-card .back {
 	transform: rotateY(180deg);
-}
-
-.flip-card .back img {
-	width: fit-content;
 }
 
