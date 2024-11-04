@@ -834,10 +834,14 @@ main>section:nth-child(even) {
 	/*	color: var(--color2);*/
 }
 
-.images figure {
+.images.beastpak figure {
 	margin: 0;
-	max-width: 256px;
+	max-width: 208px;
 	place-items: center;
+}
+.beastpak img{
+	width:100%;
+	height:auto;
 }
 
 .images a,
