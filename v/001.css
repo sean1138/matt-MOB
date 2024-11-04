@@ -837,7 +837,7 @@ main>section:nth-child(even) {
 	/*	color: var(--color2);*/
 }
 
-.images.beastpak figure {
+.images.beastpak figure, .images.cards.beastpak figure {
 	margin: 0;
 	max-width: 208px;
 	place-items: center;
@@ -1027,7 +1027,7 @@ body.modal-active {
 	transform: rotateY(180deg);
 }
 
-.flip-card img {
+.flip-card .back img {
 	width: fit-content;
 }
 
