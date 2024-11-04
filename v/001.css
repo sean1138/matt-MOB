@@ -92,8 +92,9 @@ footer h2 {
 address {
 	font-style: unset;
 }
-figure{
-	margin:0;
+
+figure {
+	margin: 0;
 }
 
 /* give lists consistent style across all browsers */
@@ -829,12 +830,13 @@ main>section:nth-child(even) {
 	gap: calc(var(--vs-gap) * 1) calc(var(--vs-gap) * 2);
 }
 
-.images img{
+.images img {
 	width: fit-content;
 	max-width: 100%;
 }
 
-.images.beastpak, .images.cards.beastpak {
+.images.beastpak,
+.images.cards.beastpak {
 	padding-top: 0;
 	gap: calc(var(--vs-gap) * 0.5) calc(var(--vs-gap) * 1);
 }
@@ -843,18 +845,21 @@ main>section:nth-child(even) {
 	/*	color: var(--color2);*/
 }
 
-.images.beastpak figure, .images.cards.beastpak figure {
+.images.beastpak figure,
+.images.cards.beastpak figure {
 	margin: 0;
 	max-width: 208px;
 	place-items: center;
 }
-.images video{
-	width:auto;
-	height:256px;
+
+.images video {
+	width: auto;
+	height: 256px;
 }
-.beastpak img{
-	width:100%;
-	height:auto;
+
+.beastpak img {
+	width: 100%;
+	height: auto;
 }
 
 .images a,
@@ -870,7 +875,7 @@ main>section:nth-child(even) {
 	right: 0;
 	left: 0;
 	bottom: 0;
-/*	content: url('i/instagram-min-white.svg');*/
+	/*	content: url('i/instagram-min-white.svg');*/
 	content: url('i/photo-svgrepo-com.svg');
 	display: flex;
 	justify-content: center;
@@ -1033,4 +1038,3 @@ body.modal-active {
 .flip-card .back {
 	transform: rotateY(180deg);
 }
-
