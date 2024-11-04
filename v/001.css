@@ -869,7 +869,8 @@ main>section:nth-child(even) {
 	right: 0;
 	left: 0;
 	bottom: 0;
-	content: url('i/instagram-min-white.svg');
+/*	content: url('i/instagram-min-white.svg');*/
+	content: url('i/photo-svgrepo-com.svg');
 	display: flex;
 	justify-content: center;
 	place-items: center;
