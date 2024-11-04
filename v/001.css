@@ -834,8 +834,9 @@ main>section:nth-child(even) {
 	max-width: 100%;
 }
 
-.images.beastpak {
+.images.beastpak, .images.cards.beastpak {
 	padding-top: 0;
+	gap: calc(var(--vs-gap) * 0.5) calc(var(--vs-gap) * 1);
 }
 
 .images.beastpak :where(h3, h4, h5) {
