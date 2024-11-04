@@ -1007,7 +1007,7 @@ body.modal-active {
 	position: absolute;
 	width: 100%;
 	display: grid;
-	justify-content: center;
+	place-items: center;
 	background: var(--color1);
 	backface-visibility: hidden;
 }
