@@ -92,6 +92,9 @@ footer h2 {
 address {
 	font-style: unset;
 }
+figure{
+	margin:0;
+}
 
 /* give lists consistent style across all browsers */
 OL,
