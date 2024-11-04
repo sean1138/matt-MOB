@@ -374,22 +374,6 @@
 			});
 		});
 	</script>
-	<script>
-		// flip cards
-		var card = document.getElementById("card");
-		card.addEventListener('click', function(e){
-		  e.stopPropagation();
-		  if(card.classList.contains('card--flipped')) {
-		    card.classList.add('card--unflip');
-		    setTimeout(function(){
-		      card.classList.remove('card--flipped', 'card--unflip');
-		    }, 500);
-		  }
-		  else {
-		    card.classList.add("card--flipped");
-		  }
-		});
-	</script>
 </body>
 
 </html>
