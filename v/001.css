@@ -26,7 +26,7 @@ html {
 	/* the base padding size var(--p-unit) is for top/bottom on sections at desktop res, use half of that for left/right, lower than desktop res not accounted for in this file */
 	--p-unit: 3rem;
 	--p-unit-tb: var(--p-unit);
-	--p-unit-lr: min(calc(var(--p-unit) / 2), 1rem);
+	--p-unit-lr: calc(var(--p-unit) / 2);
 	/* see type-scale.com */
 	--type-scale: 1.200;
 	/* do some letter-spacing scaling similar to your type scale value */
@@ -705,7 +705,7 @@ h2.first {
 	margin: 0;
 	padding: 0;
 	transition: var(--a-spd-1);
-	z-index: 1;
+	z-index: 3;
 }
 
 .menu-contents a {
@@ -900,7 +900,6 @@ main>section:nth-child(even) {
 	position: fixed;
 	bottom: 25vh;
 	right: var(--p-unit-lr);
-	z-index: 10;
 	opacity: 0;
 	/* add a translate effect */
 	transform: translateY(-100px);
