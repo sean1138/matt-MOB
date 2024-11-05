@@ -904,6 +904,7 @@ main>section:nth-child(even) {
 	/* add a translate effect */
 	transform: translateY(-100px);
 	transition: all var(--a-spd-2) ease;
+	visibility: hidden;
 }
 @media (max-width: 767px) {
 	.btt{display:none;}
@@ -915,6 +916,7 @@ main>section:nth-child(even) {
 
 .showBtn {
 	opacity: 1;
+	visibility: visible;
 	transform: translateY(0);
 }
 
