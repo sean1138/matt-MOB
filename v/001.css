@@ -905,6 +905,9 @@ main>section:nth-child(even) {
 	transform: translateY(-100px);
 	transition: all var(--a-spd-2) ease;
 }
+@media (max-width: 767px) {
+	.btt{display:none;}
+}
 
 .btt svg {
 	filter: drop-shadow(var(--t-shadow-1));
