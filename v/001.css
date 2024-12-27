@@ -45,7 +45,7 @@ html {
 	/* orange */
 	--color2: hsla(17, 91%, 54%, 1);
 
-	.color2 {
+	&.color2 {
 		color: var(--color2);
 	}
 
@@ -336,7 +336,7 @@ small {
 }
 
 big {
-	font-size: calc(var(--type-scale) *1.6em);
+	font-size: calc(1em * var(--type-scale));
 }
 
 .p {
